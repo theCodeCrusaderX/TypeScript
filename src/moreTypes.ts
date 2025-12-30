@@ -48,7 +48,6 @@ try {
 } catch (error) {
     if(error instanceof Error) {
         console.log(error);
-        
     }
 }
 
@@ -56,9 +55,7 @@ try {
 //=============================================================================================
 
 const data:unknown = "hello"
-const strData:string = data as string
-
-
+const strData:string = data as string  //if we dont put as string it will though an error
 
 //=============================================================================================
 
@@ -83,8 +80,3 @@ function redirectBasedOnRole(role : Role):void {
 function neverReturn():never {
     while(true) {}
 }
-
-
-
-
-

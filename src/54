@@ -1,0 +1,133 @@
+
+## ✅ What this means
+
+```ts
+type ChaiOrder = {
+  type: string;
+  sugar: number;
+  strong: boolean;
+};
+```
+
+You are **creating a type alias** called `ChaiOrder`.
+
+Inside the `{ ... }` you define the **shape of an object** — meaning what properties it must have and their types:
+
+| Part     | Meaning                                       |
+| -------- | --------------------------------------------- |
+| `type:`  | a **property name** (like a key in an object) |
+| `string` | the **data type of that property**            |
+| `;`      | separator (like `,`, both are allowed)        |
+
+So:
+
+```ts
+type: string
+```
+
+means:
+
+> The object must have a property called **type**, and its value must be a **string**.
+
+Same for the others:
+
+```ts
+sugar: number     // must be a number
+strong: boolean   // must be true/false
+```
+
+---
+
+## 🧠 Why your tutor calls it an “object type”
+
+Because this:
+
+```ts
+{
+  type: string;
+  sugar: number;
+  strong: boolean;
+}
+```
+
+describes the **structure (shape) of an object**.
+So a valid `ChaiOrder` **must look like this:**
+
+```ts
+const order: ChaiOrder = {
+  type: "Masala",
+  sugar: 2,
+  strong: true
+};
+```
+
+This works 👌
+
+But this will give an **error**, because `sugar` should be a number:
+
+```ts
+const wrongOrder: ChaiOrder = {
+  type: "Black",
+  sugar: "less",   // ❌ TypeScript error
+  strong: false
+};
+```
+
+---
+
+## 🔹 Why semicolons instead of commas?
+
+In **TypeScript object type definitions**, both are valid:
+
+```ts
+// This works
+{
+  type: string;
+  sugar: number;
+  strong: boolean;
+}
+
+// This also works
+{
+  type: string,
+  sugar: number,
+  strong: boolean,
+}
+```
+
+Semicolons are just the default style — but **it is still describing an object type**, even if it looks a bit different from JavaScript objects.
+
+---
+
+## 🆚 Difference from a real object
+
+This is **NOT an object itself**:
+
+```ts
+type ChaiOrder = { ... }   // ❌ NOT an object value
+```
+
+It is **only a blueprint for objects** — like saying:
+
+> “Any `ChaiOrder` must have these properties and types.”
+
+Then you **use it here:**
+
+```ts
+function makeChai(order: ChaiOrder) {
+  console.log(order);
+}
+```
+
+So `order` must match that structure.
+
+---
+
+## 🏁 Summary (simple words)
+
+* `type ChaiOrder = {...}` → **blueprint**
+* `type: string` → property named `type` must be a string
+* semicolons `;` are just separators (like commas `,`)
+* your tutor calls it an **object type** because it defines the structure of an object
+* it is **NOT an object itself**
+
